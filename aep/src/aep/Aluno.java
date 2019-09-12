@@ -1,51 +1,35 @@
 
 package aep;
 
-public class Aluno {
-    // atributos
-    private String nome, serie, turma;
-    private int matricula, idade;
-    private boolean matriculado;
-    
-    
-    
-    //Métodos públicos
-    public void apresentar(){
-        System.out.println("Aluno " + this.nome);
-        System.out.println(this.idade + " anos");
-        System.out.println("Serie: " + this.serie);
-        System.out.println("Turma: " + this.turma);
-        System.out.println("Matricula: " + this.matricula);
-        System.out.println("Matriculado: " + this.getMatriculado());
-    }
-    
-       
-    //Métodos especiais
+public class Aluno extends Pessoa {
+    private int serie;
+    private String turma;
 
-    public Aluno(String nome, int idade, String serie, String turma, int matricula) {
-        this.nome = nome;
-        this.idade = idade;
+       String nome;
+    private int idade;
+    private String sexo;
+    private String nascimento;
+    
+    public Aluno(String nome, int idade, String sexo, String nascimento,int serie, String turma) {
+        super(nome,idade,sexo,nascimento);
         this.serie = serie;
         this.turma = turma;
-        this.matricula = matricula;
+    }
+    
+    
+    public void fazerProva(){
+            System.out.println(this.getNome() + " está fazendo prova ...");
     }
 
-
-  
-
-    public String getNome() {
-        return nome;
+    public void cancelarMatricula(){
+        System.out.println("Matricula cancelada");
     }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSerie() {
+    
+    public int getSerie() {
         return serie;
     }
 
-    public void setSerie(String serie) {
+    public void setSerie(int serie) {
         this.serie = serie;
     }
 
@@ -56,31 +40,5 @@ public class Aluno {
     public void setTurma(String turma) {
         this.turma = turma;
     }
-
-    public int getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public boolean getMatriculado() {
-        return matriculado;
-    }
-
-    public void setMatriculado(boolean matriculado) {
-        if (this.matricula != 0){
-        this.matriculado = matriculado;}
-    }
-    
     
 }

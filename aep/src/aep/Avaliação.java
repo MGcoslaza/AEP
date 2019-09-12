@@ -1,55 +1,28 @@
-
+    
 package aep;
 
 
-public class Avaliação  {
-    // atributos
-    private String id;
-    private Aluno avaliado;
-    private String questão;
+public class Avaliação {
     private float nota;
-    private boolean aprovado;
-
+    private Aluno avaliado;
+    private String situacao;
     
-    public Avaliação(String id, Aluno avaliado, String questão, float nota) {
-        this.id = id;
-        this.avaliado = avaliado;
-        this.questão = questão;
+    public Avaliação(float nota, Aluno avaliado) {
         this.nota = nota;
-        this.aprovado= aprovado;
+        this.avaliado = avaliado;
+        if(nota>=6.00f){
+            this.situacao="Aprovado";
+        }else{
+            this.situacao="Reprovado";
+        }
     }
 
-    
-    public String detalhes() {
-        return "------------------------"
-                + "\n Avaliação{" + "id= " + id + 
-                ",\n avaliado= " + avaliado.getNome() +
-                ", serie= " + avaliado.getSerie() +
-                ", turma= " + avaliado.getTurma() +
-                ",\n questão= " + questão + 
-                ",\n nota= " + nota + 
-                "\n aprovado= " + aprovado +'}';
+    public float getNota() {
+        return nota;
     }
 
-        
-    // métodos públicos
-    
-    public void avaliar(){
-        if (this.avaliado.getMatriculado()){
-            this.setQuestão(questão);
-        } else {
-            System.out.println("Aluno não matriculado");
-        }        
-    }
-    
-    // métodos especiais
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public void setNota(float nota) {
+        this.nota = nota;
     }
 
     public Aluno getAvaliado() {
@@ -60,39 +33,21 @@ public class Avaliação  {
         this.avaliado = avaliado;
     }
 
-    public String getQuestão() {
-        return questão;
-    }
-
-    public void setQuestão(String questão) {
-                   
-    }
-
-    public float getNota() {
-        return nota;
-    }
-
-    public void setNota(float nota) {
-        if (this.nota < 0){
-            System.out.println("Nota inválida");
-        } else if (this.nota > 10){
-            System.out.println("Nota inválida");
-        }
-    }
-
-    public boolean getAprovado() {
-        return aprovado;
-    }
-
-    public void setAprovado(boolean aprovado) {
-         if (this.nota >= 6){
-            this.aprovado = true;
-
-        } else{
-             this.aprovado = false;
-        }
+    @Override
+    public String toString() {
+        return "Avaliacao: "
+                + "Nota:" + nota 
+                + ", Avaliado:" + avaliado.getNome()
+                + ", Situação: " + situacao;
         
     }
-    
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
 
 }
